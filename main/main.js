@@ -1,27 +1,69 @@
-const colors = ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue'];
+let options = {
+    day: 'numeric',
+    month: 'numeric',
+    year: 'numeric'
+}
 
-const text1 = document.getElementById ("text1");
-console.log (text1);
-const text2 = document.getElementById ("text2");
-console.log (text2);
-const text3 = document.getElementById ("text3");
-console.log (text3);
+function getDate(str) {
+    let date = new Date(str);
+    return date.toLocaleString('ru', options)
+}
 
-function changeColor( ) {
-    let i = 0;
-    return function (event) {
-        event.target.style.color = colors [ i ];
-        i++;
-        if ( i >= colors.length) {
-            i = 0;
+console.log(getDate('2020-11-26'));
+
+
+const data = [
+    {
+        country: 'Russia',
+        city: 'Saint Petersburg',
+        hotel: 'Hotel Leopold',
+    },
+    {
+        country: 'Spain',
+        city: 'Santa Cruz de Tenerife',
+        hotel: 'Apartment Sunshine',
+    },
+    {
+        country: 'Slowakia',
+        city: 'Vysokie Tatry',
+        hotel: 'Villa Kunerad',
+    },
+    {
+        country: 'Germany',
+        city: 'Berlin',
+        hotel: 'Hostel Friendship',
+    },
+    {
+        country: 'Indonesia',
+        city: 'Bali',
+        hotel: 'Ubud Bali Resort&SPA',
+    },
+    {
+        country: 'Netherlands',
+        city: 'Rotterdam',
+        hotel: 'King Kong Hostel',
+    },
+    {
+        country: 'Marocco',
+        city: 'Ourika',
+        hotel: 'Rokoko Hotel',
+    },
+    {
+        country: 'Germany',
+        city: 'Berlin',
+        hotel: 'Hotel Rehberge Berlin Mitte',
+    },
+];
+
+function search ( select, array) {
+    let matches = [ ];
+    for ( let i = 0; i < array.length;  i++) {
+        const data = array [i].country + array [i].city +array  [i].hotel;
+        if (data.toLowerCase().includes(select.toLowerCase())) {
+            matches.push(array [i]);
         }
     }
+    return matches;
+}
 
-};
-
-const changeColor1 = changeColor ( );
-text1.addEventListener ("click" , changeColor1);
-const changeColor2 = changeColor ( );
-text2.addEventListener ("click" , changeColor2);
-const changeColor3 = changeColor ( );
-text3.addEventListener ("click" , changeColor3);
+console.log(search("HOT", data))
