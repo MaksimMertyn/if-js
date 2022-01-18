@@ -12,8 +12,6 @@ function getDate(str) {
 console.log(getDate('2020-11-26'));
 
 
-
-
 const data = [
     {
         country: 'Russia',
@@ -60,13 +58,12 @@ const data = [
 function search ( select, array) {
     let matches = [ ];
     for ( let i = 0; i < array.length;  i++) {
-        const objVal = Object.values(array[ i ]);
-        console.log(objVal);
-        if (objVal.includes(select)) {
-            matches.push(objVal.join(" "));
+        const data = array [i].country + array [i].city +array  [i].hotel;
+        if (data.toLowerCase().includes(select.toLowerCase())) {
+            matches.push(array [i]);
         }
     }
     return matches;
 }
 
-console.log(search("Germany", data));
+console.log(search("HOT", data))
