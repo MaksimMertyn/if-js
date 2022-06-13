@@ -43,8 +43,8 @@ const deepEqual = (obj1, obj2, obj3) => {
     for ( let i = 0; i < prop1.length; i++){
         const prop = prop1[ i ];
         const bothObject = typeof (obj1 [prop]) === 'object' && typeof (obj2 [prop]) === 'object' && typeof (obj3 [ prop]) === 'object';
-        if (!bothObject && ( obj1 [ prop ] !== obj2 [ prop ]))
-        || (bothObject && !deepEqual(obj1 [ prop], obj2 [ prop], obj3 [ prop])) {
+        if (!bothObject && ( obj1 [ prop ] !== obj2 [ prop ])
+        || bothObject && !deepEqual(obj1 [ prop], obj2 [ prop], obj3 [ prop])) {
             return true;
         }
     } 
